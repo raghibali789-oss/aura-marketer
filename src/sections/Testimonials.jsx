@@ -72,7 +72,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="container pt-24 sm:pt-28">
       <SectionHeader
-        kicker="Social proof"
+        kicker="TESTIMONIALS"
         title="What our partners say."
         subtitle="We keep our client list intentionally small so we can obsess over your numbers like they’re our own."
         align="center"

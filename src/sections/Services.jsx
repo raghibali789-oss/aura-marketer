@@ -31,7 +31,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="container pt-24 sm:pt-28">
+    <section id="services" className="container scroll-mt-32 pt-24 sm:pt-28">
       <div className="grid gap-10 md:grid-cols-[1.2fr,2fr] md:items-start">
         <SectionHeader
           kicker="Services"

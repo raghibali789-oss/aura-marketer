@@ -14,25 +14,29 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-4 z-50 flex justify-center w-full px-4">
+    <header className="sticky top-0 z-50 w-full">
+      {/* Navbar Container */}
       <nav
         className="
-        w-full max-w-7xl
-        flex items-center justify-between 
-        px-6 py-3 md:px-10 md:py-4
-        rounded-2xl
-        bg-slate-900/60 
-        border border-white/10 
-        backdrop-blur-xl 
-        shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)]
-      "
+          w-full 
+          flex items-center justify-between
+          px-4 py-3
+          md:max-w-7xl md:mx-auto md:mt-4 md:rounded-2xl
+          
+          /* Desktop Glass */
+          md:bg-slate-900/60 md:border md:border-white/10 md:backdrop-blur-xl
+          md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)]
+
+          /* Mobile Solid */
+          bg-slate-950
+        "
       >
-        {/* LOGO SECTION (UNCHANGED SIZE) */}
+        {/* LOGO */}
         <a href="#top" className="flex items-center gap-4">
           <img
             src={logo}
             alt="Aura Marketer Logo"
-            className="h-32 w-32 sm:h-20 object-cover drop-shadow-lg"
+            className="h-16 w-16 sm:h-20 object-cover drop-shadow-lg"
           />
           <div className="flex flex-col -mt-1">
             <span className="text-base font-semibold tracking-wide">
@@ -44,7 +48,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
           <ul className="flex items-center gap-8 text-sm font-medium text-slate-300">
             {navItems.map((item) => (
@@ -59,21 +63,20 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* GET IN TOUCH BUTTON – Aura Gradient */}
           <a
-  href="#contact"
-  className="px-5 py-2 rounded-full font-medium text-[13px]
-             bg-gradient-to-r from-sky-400 to-emerald-400
-             text-slate-900 shadow-lg shadow-emerald-400/20"
->
-  Get in Touch
-</a>
+            href="#contact"
+            className="px-5 py-2 rounded-full font-medium text-[13px]
+                       bg-gradient-to-r from-sky-400 to-emerald-400
+                       text-slate-900 shadow-lg shadow-emerald-400/20"
+          >
+            Get in Touch
+          </a>
         </div>
 
-        {/* Mobile Button */}
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex rounded-full border border-slate-700/90 bg-slate-900/80 p-2 text-slate-200"
+          className="md:hidden inline-flex rounded-md border border-slate-700/50 bg-slate-800/90 p-2 text-slate-200"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -81,7 +84,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden w-full max-w-7xl bg-slate-900/95 border border-slate-800/70 rounded-xl mt-2 p-4 space-y-3 backdrop-blur-xl">
+        <div className="md:hidden w-full bg-slate-950 border-t border-slate-800 p-4 space-y-3">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -92,14 +95,13 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="
-              block text-center w-full px-5 py-2 rounded-full text-sm font-semibold text-white
-              bg-gradient-to-r from-green-400 via-lime-300 to-yellow-400
-              shadow-md shadow-yellow-400/30 mt-2
-            "
+            className="block text-center w-full px-5 py-2 rounded-full text-sm font-semibold text-slate-900
+                       bg-gradient-to-r from-cyan-400 to-emerald-300
+                       shadow-md mt-2"
           >
             Get in Touch
           </a>
