@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-50 antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      "Segoe UI", sans-serif;
+  }
+
+  ::selection {
+    @apply bg-indigo-500/80 text-white;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass {
+    @apply bg-slate-900/60 border border-slate-800/80 backdrop-blur-lg;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full bg-slate-900/80 px-4 py-1 text-xs font-medium text-slate-300 ring-1 ring-slate-700/80;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-50;
+  }
+
+  .section-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.25em] text-indigo-400;
+  }
+
+  .section-subtitle {
+    @apply max-w-2xl text-sm sm:text-base text-slate-400;
+  }
+
+  .primary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-indigo-500 px-6 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-400 hover:shadow-indigo-400/30 active:bg-indigo-500/90;
+  }
+
+  .secondary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/60 px-6 py-2 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:bg-slate-900;
+  }
+
+  .badge-soft {
+    @apply inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-500/30;
+  }
+}
