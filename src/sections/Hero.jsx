@@ -1,7 +1,7 @@
 import React from "react";
-import { ArrowRight, LineChart, Rocket, Users,Sparkles } from "lucide-react";
+import { Sparkles, LineChart, Users, Rocket } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ onOpenBrandForm,onOpenInfluencerForm }) {
   return (
     <section id="top" className="container pt-12 sm:pt-16 md:pt-20">
       <div className="grid gap-10 md:grid-cols-[3fr,2fr] md:items-center">
@@ -17,14 +17,13 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* TITLE & SUBTITLE — RESTORED */}
+          {/* TITLE & SUBTITLE */}
           <div className="space-y-4">
             <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
               Turn creator influence into{" "}
               <span className="bg-gradient-to-r from-indigo-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
                 predictable revenue
-              </span>
-              .
+              </span>.
             </h1>
 
             <p className="max-w-xl text-sm text-slate-400 sm:text-base">
@@ -34,32 +33,34 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* BRAND + INFLUENCER BUTTONS — KEPT */}
+          {/* BUTTONS */}
           <div className="flex gap-4 pt-2">
             <button
+              onClick={onOpenBrandForm}
               className="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-300 text-slate-900 font-semibold shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
             >
               I’m a Brand
             </button>
 
             <button
+            onClick={onOpenInfluencerForm}
               className="px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-300 text-slate-900 font-semibold shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
             >
               I’m an Influencer
             </button>
           </div>
 
-          {/* 📊 STATS */}
+          {/* STATS */}
           <div className="flex flex-wrap gap-6 pt-4 text-xs text-slate-400">
             <Stat icon={LineChart} label="Average ROAS" value="4.7x" tone="indigo" />
             <Stat icon={Users} label="Creators in our private network" value="1.2k+" tone="cyan" />
             <Stat icon={Rocket} label="Launch-ready in" value="21 days" tone="emerald" />
           </div>
 
-          {/* CTA ROW REMOVED */}
+
         </div>
 
-        {/* RIGHT SIDE VISUAL */}
+        {/* RIGHT SIDE */}
         <div className="glass relative rounded-3xl p-5 shadow-[0_0_120px_rgba(30,64,175,0.45)]">
           <div className="absolute -top-10 -right-6 h-32 w-32 rounded-full bg-indigo-500/25 blur-3xl" />
 
@@ -77,7 +78,7 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* METRICS */}
+
           <div className="mt-6 grid grid-cols-3 gap-3 text-xs">
             <Metric label="Influencer revenue" value="$184,930" trend="+62%" />
             <Metric label="Creator CTR" value="4.9%" trend="+31%" />
@@ -86,7 +87,7 @@ export default function Hero() {
 
           {/* TESTIMONIAL */}
           <div className="mt-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 p-4 text-xs text-slate-300">
-            “Aura Marketer turned our creator chaos into a structuredacquisition channel that beats paid social on CAC.”
+            “Aura Marketer turned our creator chaos into a structured acquisition channel that beats paid social on CAC.”
 
             <div className="mt-3 flex items-center gap-3 text-[11px] text-slate-400">
               <div className="h-6 w-6 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400" />
@@ -99,11 +100,13 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
 }
 
+/* -------- STAT COMPONENT -------- */
 function Stat({ icon: Icon, label, value, tone }) {
   const toneClasses =
     tone === "indigo"
@@ -125,6 +128,7 @@ function Stat({ icon: Icon, label, value, tone }) {
   );
 }
 
+/* -------- METRIC COMPONENT -------- */
 function Metric({ label, value, trend }) {
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-3">
