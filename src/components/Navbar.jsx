@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo from "../Assets/Logo.png";
 
 const navItems = [
-  { href: "#home", label: "Home" },
+  { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#about", label: "About" },
@@ -15,20 +15,25 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* Navbar Container */}
+
+      {/* DESKTOP + MOBILE NAV */}
       <nav
         className="
-          w-full 
-          flex items-center justify-between
+          w-full
           px-4 py-3
-          md:max-w-7xl md:mx-auto md:mt-4 md:rounded-2xl
-          
-          /* Desktop Glass */
-          md:bg-slate-900/60 md:border md:border-white/10 md:backdrop-blur-xl
-          md:shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)]
 
-          /* Mobile Solid */
+          /* DESKTOP GLASS (FULL WIDTH, NO ROUNDED CORNERS) */
+          md:backdrop-blur-xl
+          md:bg-slate-900/50
+          md:border-b md:border-white/10
+
+          /* Remove box styling */
+          md:shadow-none
+          md:rounded-none
+
+          /* MOBILE SOLID */
           bg-slate-950
+          flex items-center justify-between
         "
       >
         {/* LOGO */}
@@ -36,7 +41,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Aura Marketer Logo"
-            className="h-16 w-16 sm:h-20 object-cover drop-shadow-lg"
+            className="h-32 w-32 sm:h-20 object-cover drop-shadow-lg"
           />
           <div className="flex flex-col -mt-1">
             <span className="text-base font-semibold tracking-wide">
@@ -48,7 +53,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Nav */}
+        {/* DESKTOP NAV */}
         <div className="hidden md:flex items-center gap-10">
           <ul className="flex items-center gap-8 text-sm font-medium text-slate-300">
             {navItems.map((item) => (
@@ -64,49 +69,51 @@ export default function Navbar() {
           </ul>
 
           <a
-            href="#contact"
+            href="#footer"
             className="px-5 py-2 rounded-full font-medium text-[13px]
                        bg-gradient-to-r from-sky-400 to-emerald-400
-                       text-slate-900 shadow-lg shadow-emerald-400/20"
+                       text-slate-900 shadow-md shadow-emerald-400/20"
           >
             Get in Touch
           </a>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* MOBILE MENU BUTTON */}
         <button
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(!open)}
           className="md:hidden inline-flex rounded-md border border-slate-700/50 bg-slate-800/90 p-2 text-slate-200"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* MOBILE DROPDOWN MENU */}
       {open && (
-        <div className="md:hidden w-full bg-slate-950 border-t border-slate-800 p-4 space-y-3">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="block text-sm text-slate-200 py-1"
-            >
-              {item.label}
-            </a>
-          ))}
+  <div 
+    className="md:hidden w-full bg-slate-950 border-t border-slate-800 
+               p-4 space-y-3 absolute left-0 top-full z-40"
+  >
+    {navItems.map((item) => (
+      <a
+        key={item.href}
+        href={item.href}
+        onClick={() => setOpen(false)}
+        className="block text-sm text-slate-200 py-1"
+      >
+        {item.label}
+      </a>
+    ))}
 
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="block text-center w-full px-5 py-2 rounded-full text-sm font-semibold text-slate-900
-                       bg-gradient-to-r from-cyan-400 to-emerald-300
-                       shadow-md mt-2"
-          >
-            Get in Touch
-          </a>
-        </div>
-      )}
+    <a
+      href="#footer"
+      onClick={() => setOpen(false)}
+      className="block text-center w-full px-5 py-2 rounded-full text-sm font-semibold text-slate-900
+                 bg-gradient-to-r from-cyan-400 to-emerald-300 shadow-md mt-2"
+    >
+      Get in Touch
+    </a>
+  </div>
+)}
     </header>
   );
 }

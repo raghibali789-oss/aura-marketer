@@ -12,7 +12,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="mt-32 border-t border-slate-800/60 bg-slate-950/40 py-14 backdrop-blur-xl">
+    <footer id="footer" className="mt-32 border-t border-slate-800/60 bg-slate-950/40 py-14 backdrop-blur-xl">
       <div className="container grid gap-12 md:grid-cols-3">
         
         {/* Left Section */}
