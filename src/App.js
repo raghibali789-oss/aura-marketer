@@ -10,6 +10,7 @@ import Pricing from "./sections/Pricing";
 import FAQ from "./sections/FAQ";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import AboutShowcase from "./sections/AboutShowcase";
 
 /* ✅ IMPORT WATERMARK IMAGES CORRECTLY */
 import bg1 from "./Assets/bg-marketing-1.png";
@@ -51,8 +52,7 @@ function App() {
         <HeroWrapper />
         <Brands />
         <Services />
-        <Process />
-        <CaseStudies />
+        <AboutShowcase />
         <Testimonials />
         <Pricing />
         <FAQ />

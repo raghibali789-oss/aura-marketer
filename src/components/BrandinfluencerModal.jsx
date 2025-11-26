@@ -36,7 +36,7 @@ Message: ${formData.get("details")}
 
     // ---- WHATSAPP ----
     window.open(
-      https://wa.me/YOURNUMBER?text=${encodeURIComponent(message)},
+      'https://wa.me/YOURNUMBER?text=${encodeURIComponent(message)}',
       "_blank"
     );
 
